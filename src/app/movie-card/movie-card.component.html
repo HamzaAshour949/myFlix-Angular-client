@@ -1,0 +1,31 @@
+<div class="button-container">
+    <button mat-raised-button (click)="goToProfile()" color="primary">
+        Go to profile
+    </button>
+    <button mat-raised-button (click)="logout()" color="primary">
+        Logout
+    </button>
+</div>
+<div style="display: flex;">
+    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+        <mat-card-header>
+            <mat-card-title>{{movie.Title}}</mat-card-title>
+            <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img src={{movie.ImagePath}} alt={{movie.Title}} />
+        <mat-card-actions>
+            <button (click)="openGenre(movie.Genre)" mat-button color="primary">
+                Genre
+            </button>
+            <button (click)="openDirector(movie.Director)" mat-button color="primary">
+                Director
+            </button>
+            <button (click)="openMovie(movie)" mat-button color="primary">
+                Synopsis
+            </button>
+            <mat-icon (click)="toggleFavourite(movie._id)">{{userFavouriteMovies.includes(movie._id) ?
+                "favorite_filled" :
+                "favorite_border"}}</mat-icon>
+        </mat-card-actions>
+    </mat-card>
+</div>
